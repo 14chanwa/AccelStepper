@@ -654,7 +654,7 @@ protected:
     
     /// The current interval between steps in microseconds.
     /// 0 means the motor is currently stopped with _speed == 0
-    unsigned long  _stepInterval;
+    volatile unsigned long  _stepInterval;
 
 private:
     /// Number of pins on the stepper motor. Permits 2 or 4. 2 pins is a
@@ -669,7 +669,7 @@ private:
     uint8_t        _pinInverted[4];
 
     /// The current absolution position in steps.
-    long           _currentPos;    // Steps
+    volatile long           _currentPos;    // Steps
 
     /// The target position in steps. The AccelStepper library will move the
     /// motor from the _currentPos to the _targetPos, taking into account the
@@ -689,7 +689,7 @@ private:
     float          _sqrt_twoa; // Precomputed sqrt(2*_acceleration)
 
     /// The last step time in microseconds
-    unsigned long  _lastStepTime;
+    volatile unsigned long  _lastStepTime;
 
     /// The minimum allowed pulse width in microseconds
     unsigned int   _minPulseWidth;
