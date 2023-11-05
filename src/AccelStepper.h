@@ -556,6 +556,9 @@ public:
 
     /// Virtual destructor to prevent warnings during delete
     virtual ~AccelStepper() {};
+
+    /// The current absolution position in steps.
+    volatile long           _currentPos;    // Steps
 protected:
 
     /// \brief Direction indicator
@@ -667,9 +670,6 @@ private:
 
     /// Whether the _pins is inverted or not
     uint8_t        _pinInverted[4];
-
-    /// The current absolution position in steps.
-    volatile long           _currentPos;    // Steps
 
     /// The target position in steps. The AccelStepper library will move the
     /// motor from the _currentPos to the _targetPos, taking into account the
